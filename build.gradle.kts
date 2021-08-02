@@ -16,7 +16,7 @@ import org.jetbrains.kotlin.gradle.tasks.KotlinCompile
 import java.util.regex.Matcher
 
 plugins {
-    kotlin("jvm") version "1.5.20"
+    kotlin("jvm")
     id("java-gradle-plugin")
     id("jacoco")
     id("maven-publish")
