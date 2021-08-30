@@ -71,6 +71,8 @@ dependencies {
 
     implementation("de.fayard.refreshVersions:refreshVersions:_")
 
+    implementation("com.fasterxml.jackson.core:jackson-annotations:_")
+
     testImplementation(kotlin("test"))
     testImplementation("io.kotest:kotest-runner-junit5:_")
     testImplementation("io.kotest:kotest-extensions-junit5:_")
