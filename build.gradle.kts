@@ -74,8 +74,10 @@ dependencies {
     implementation("com.fasterxml.jackson.core:jackson-annotations:_")
 
     testImplementation(kotlin("test"))
-    testImplementation("io.kotest:kotest-runner-junit5:_")
+    testImplementation("io.kotest:kotest-assertions-core:_")
     testImplementation("io.kotest:kotest-extensions-junit5:_")
+    testImplementation("io.kotest:kotest-property:_")
+    testImplementation("io.kotest:kotest-runner-junit5:_")
     testImplementation("io.mockk:mockk:_")
 }
 
@@ -176,8 +178,8 @@ with(tasks) {
 
     jacocoTestReport {
         reports {
-            xml.isEnabled = true
-            html.isEnabled = false
+            xml.required.set(true)
+            html.required.set(false)
         }
     }
 
