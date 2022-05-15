@@ -161,7 +161,7 @@ with(tasks) {
                     |$startItem$output$endItem
                     |${"-".repeat(repeatLength)}
                     |
-                    """.trimMargin()
+                        """.trimMargin()
                     )
                 }
             }
