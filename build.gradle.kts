@@ -39,8 +39,8 @@ gradlePlugin {
 }
 
 val kotlinVersion = getKotlinPluginVersion()
-val javaVersion = JavaVersion.VERSION_11
-val jvmTargetVersion = "11"
+val javaVersion = JavaVersion.VERSION_17
+val jvmTargetVersion = "17"
 
 java.apply {
     sourceCompatibility = javaVersion
