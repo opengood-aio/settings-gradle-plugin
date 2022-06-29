@@ -222,7 +222,7 @@ release {
         })
     )
     git {
-        requireBranch.set("")
+        requireBranch.set("main")
         pushToRemote.set("origin")
     }
 }
