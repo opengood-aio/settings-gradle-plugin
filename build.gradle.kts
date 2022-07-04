@@ -222,7 +222,7 @@ pluginBundle {
     description = "Gradle plugin providing centralized settings of OpenGood Gradle projects"
     tags = listOf("kotlin", "spring-boot", "opengood")
 
-    (plugins) {
+    (gradlePlugin.plugins) {
         "opengood-settings" {
             displayName = "OpenGood Settings Gradle Plugin"
         }
