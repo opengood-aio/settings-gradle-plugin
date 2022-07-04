@@ -1,4 +1,4 @@
-import com.github.benmanes.gradle.versions.updates.DependencyUpdatesTask
+
 import net.researchgate.release.GitAdapter.GitConfig
 import net.researchgate.release.ReleaseExtension
 import org.gradle.api.tasks.testing.logging.TestExceptionFormat
@@ -20,7 +20,6 @@ plugins {
     id("java-gradle-plugin")
     id("jacoco")
     id("maven-publish")
-    id("com.github.ben-manes.versions")
     id("net.researchgate.release")
     id("com.gradle.plugin-publish")
 }
@@ -92,25 +91,6 @@ with(tasks) {
         kotlinOptions {
             freeCompilerArgs = listOf("-Xjsr305=strict")
             jvmTarget = jvmTargetVersion
-        }
-    }
-
-    withType<DependencyUpdatesTask> {
-        val isDependencyVersionNotStable = fun(version: String): Boolean {
-            val stableKeywords = listOf("RELEASE", "FINAL", "GA").any { version.toUpperCase().contains(it) }
-            val regex = "^[0-9,.v-]+(-r)?$".toRegex()
-            val isStable = stableKeywords || regex.matches(version)
-            return isStable.not()
-        }
-
-        resolutionStrategy {
-            componentSelection {
-                all {
-                    if (isDependencyVersionNotStable(candidate.version) && !isDependencyVersionNotStable(currentVersion)) {
-                        reject("Release candidate")
-                    }
-                }
-            }
         }
     }
 
