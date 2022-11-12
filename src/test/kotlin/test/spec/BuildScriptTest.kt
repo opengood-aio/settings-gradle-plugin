@@ -1,17 +1,16 @@
-package spec
+package test.spec
 
-import helper.createProjectDir
-import helper.createProjectSrcDir
-import helper.getSettingsGradleFile
 import io.kotest.core.spec.style.wordSpec
 import io.kotest.matchers.string.shouldContain
 import io.opengood.gradle.SettingsPlugin
 import io.opengood.gradle.enumeration.LanguageType
 import org.gradle.testkit.runner.GradleRunner
+import test.createProjectDir
+import test.createProjectSrcDir
+import test.getSettingsGradleFile
 import java.util.Locale
 
 fun buildScriptTest(languageType: LanguageType) = wordSpec {
-
     "Gradle ${languageType.toString().lowercase().replaceFirstChar { if (it.isLowerCase()) it.titlecase(Locale.getDefault()) else it.toString() }} DSL build script with configured plugin" should {
         "Lead to successful build" {
             val projectDir = createProjectDir()

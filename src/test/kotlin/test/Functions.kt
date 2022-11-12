@@ -1,4 +1,4 @@
-package helper
+package test
 
 import io.opengood.gradle.constant.Directories
 import io.opengood.gradle.enumeration.LanguageType

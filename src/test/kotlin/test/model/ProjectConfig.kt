@@ -1,4 +1,4 @@
-package helper
+package test.model
 
 import io.opengood.gradle.enumeration.LanguageType
 
