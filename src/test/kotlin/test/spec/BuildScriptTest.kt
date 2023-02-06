@@ -22,7 +22,7 @@ fun buildScriptTest(languageType: LanguageType) = wordSpec {
                 plugins {
                     id("io.opengood.gradle.settings")
                 }
-                """.trimIndent()
+                """.trimIndent(),
             )
 
             val result = GradleRunner.create()

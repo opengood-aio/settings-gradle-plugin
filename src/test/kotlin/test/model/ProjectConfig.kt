@@ -9,5 +9,5 @@ data class ProjectConfig(
     val version: String = "1.0.0-SNAPSHOT",
     val srcDir: Boolean = true,
     val buildGradle: Boolean = true,
-    val settingsGradle: Boolean = true
+    val settingsGradle: Boolean = true,
 )
