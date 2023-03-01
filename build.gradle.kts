@@ -1,4 +1,3 @@
-
 import net.researchgate.release.GitAdapter.GitConfig
 import net.researchgate.release.ReleaseExtension
 import org.gradle.api.tasks.testing.logging.TestExceptionFormat
@@ -27,12 +26,16 @@ plugins {
 group = "io.opengood.gradle"
 
 gradlePlugin {
+    website.set("https://opengood.io")
+    vcsUrl.set("https://github.com/opengoodio/config-gradle-plugin")
+
     plugins {
         create("opengood-settings") {
             id = "io.opengood.gradle.settings"
-            implementationClass = "io.opengood.gradle.SettingsPlugin"
             displayName = "OpenGood Settings Gradle Plugin"
             description = "Gradle plugin providing centralized settings of OpenGood Gradle projects"
+            tags.set(listOf("kotlin", "spring-boot", "opengood"))
+            implementationClass = "io.opengood.gradle.SettingsPlugin"
         }
     }
 }
@@ -141,7 +144,7 @@ with(tasks) {
                     |$startItem$output$endItem
                     |${"-".repeat(repeatLength)}
                     |
-                        """.trimMargin()
+                        """.trimMargin(),
                     )
                 }
             }
@@ -199,7 +202,7 @@ release {
     versionPatterns = mapOf(
         """[.]*\.(\d+)\.(\d+)[.]*""" to KotlinClosure2<Matcher, Project, String>({ matcher, _ ->
             matcher.replaceAll(".${(matcher.group(1)).toString().toInt() + 1}.0")
-        })
+        }),
     )
     git {
         requireBranch.set("main")
@@ -212,19 +215,6 @@ publishing {
         maven {
             name = "local"
             url = uri(mavenLocal().url)
-        }
-    }
-}
-
-pluginBundle {
-    website = "https://opengood.io"
-    vcsUrl = "https://github.com/opengoodio/settings-gradle-plugin"
-    description = "Gradle plugin providing centralized settings of OpenGood Gradle projects"
-    tags = listOf("kotlin", "spring-boot", "opengood")
-
-    (gradlePlugin.plugins) {
-        "opengood-settings" {
-            displayName = "OpenGood Settings Gradle Plugin"
         }
     }
 }

@@ -7,7 +7,7 @@ import org.gradle.api.initialization.Settings
 class SettingsPlugin : Plugin<Settings> {
 
     override fun apply(settings: Settings) {
-        println("Applying $PLUGIN_ID project settings...")
+        println("Applying $ID project settings...")
         configurePlugins(settings)
     }
 
@@ -20,6 +20,6 @@ class SettingsPlugin : Plugin<Settings> {
     }
 
     companion object {
-        const val PLUGIN_ID = "io.opengood.gradle.settings"
+        const val ID = "io.opengood.gradle.settings"
     }
 }

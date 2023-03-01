@@ -33,7 +33,7 @@ fun buildScriptTest(languageType: LanguageType) = wordSpec {
 
             println(result.output)
 
-            result.output.shouldContain("Applying ${SettingsPlugin.PLUGIN_ID} project settings...")
+            result.output.shouldContain("Applying ${SettingsPlugin.ID} project settings...")
             result.output.shouldContain("BUILD SUCCESSFUL")
         }
     }
