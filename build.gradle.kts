@@ -97,8 +97,8 @@ with(tasks) {
     }
 
     withType<Test> {
-        finalizedBy("jacocoTestReport")
         useJUnitPlatform()
+        finalizedBy("jacocoTestReport")
 
         testLogging {
             events = setOf(PASSED, SKIPPED, FAILED, STANDARD_ERROR)
