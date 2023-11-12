@@ -2,6 +2,7 @@
 
 [![Build](https://github.com/opengoodio/settings-gradle-plugin/workflows/build/badge.svg)](https://github.com/opengoodio/settings-gradle-plugin/actions?query=workflow%3Abuild)
 [![Release](https://github.com/opengoodio/settings-gradle-plugin/workflows/release/badge.svg)](https://github.com/opengoodio/settings-gradle-plugin/actions?query=workflow%3Arelease)
+[![CodeQL](https://github.com/opengoodio/settings-gradle-plugin/actions/workflows/github-code-scanning/codeql/badge.svg)](https://github.com/opengoodio/settings-gradle-plugin/actions/workflows/github-code-scanning/codeql)
 [![Codecov](https://codecov.io/gh/opengoodio/settings-gradle-plugin/branch/main/graph/badge.svg?token=AEEYTGK87F)](https://codecov.io/gh/opengoodio/settings-gradle-plugin)
 [![Release Version](https://img.shields.io/github/release/opengoodio/settings-gradle-plugin.svg)](https://github.com/opengoodio/settings-gradle-plugin/releases/latest)
 [![License](https://img.shields.io/badge/license-MIT-blue.svg)](https://raw.githubusercontent.com/opengoodio/settings-gradle-plugin/master/LICENSE)

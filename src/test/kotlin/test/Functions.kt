@@ -6,10 +6,12 @@ import io.opengood.gradle.enumeration.SrcDirType
 import java.nio.file.Files
 import java.nio.file.Path
 
-internal fun createProjectDir(): Path =
-    Files.createTempDirectory("")
+internal fun createProjectDir(): Path = Files.createTempDirectory("")
 
-internal fun createProjectSrcDir(languageType: LanguageType, projectDir: Path): Boolean =
+internal fun createProjectSrcDir(
+    languageType: LanguageType,
+    projectDir: Path,
+): Boolean =
     when (languageType) {
         LanguageType.GROOVY -> projectDir.resolve(SrcDirType.GROOVY.first()).toFile().mkdirs()
         LanguageType.JAVA -> projectDir.resolve(SrcDirType.JAVA.first()).toFile().mkdirs()
