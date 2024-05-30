@@ -1,4 +1,3 @@
-
 import org.gradle.api.tasks.testing.logging.TestExceptionFormat
 import org.gradle.api.tasks.testing.logging.TestLogEvent.FAILED
 import org.gradle.api.tasks.testing.logging.TestLogEvent.PASSED
@@ -40,8 +39,8 @@ gradlePlugin {
 }
 
 val kotlinVersion = getKotlinPluginVersion()
-val javaVersion = JavaVersion.VERSION_17
-val jvmTargetVersion = "17"
+val javaVersion = JavaVersion.VERSION_21
+val jvmTargetVersion = "21"
 
 java.apply {
     sourceCompatibility = javaVersion
@@ -119,35 +118,46 @@ with(tasks) {
             }
         }
 
-        addTestListener(object : TestListener {
-            override fun beforeSuite(suite: TestDescriptor) {}
-            override fun beforeTest(testDescriptor: TestDescriptor) {}
-            override fun afterTest(testDescriptor: TestDescriptor, result: TestResult) {}
-            override fun afterSuite(suite: TestDescriptor, result: TestResult) {
-                if (suite.parent == null) {
-                    val output =
-                        "Results: ${result.resultType} " +
-                            "(" +
-                            "${result.testCount} tests, " +
-                            "${result.successfulTestCount} successes, " +
-                            "${result.failedTestCount} failures, " +
-                            "${result.skippedTestCount} skipped" +
-                            ")"
-                    val startItem = "| "
-                    val endItem = " |"
-                    val repeatLength = startItem.length + output.length + endItem.length
-                    out.style(if (result.failedTestCount == 0L) Style.SuccessHeader else Style.FailureHeader).println(
-                        """
+        addTestListener(
+            object : TestListener {
+                override fun beforeSuite(suite: TestDescriptor) {}
+
+                override fun beforeTest(testDescriptor: TestDescriptor) {}
+
+                override fun afterTest(
+                    testDescriptor: TestDescriptor,
+                    result: TestResult,
+                ) {}
+
+                override fun afterSuite(
+                    suite: TestDescriptor,
+                    result: TestResult,
+                ) {
+                    if (suite.parent == null) {
+                        val output =
+                            "Results: ${result.resultType} " +
+                                "(" +
+                                "${result.testCount} tests, " +
+                                "${result.successfulTestCount} successes, " +
+                                "${result.failedTestCount} failures, " +
+                                "${result.skippedTestCount} skipped" +
+                                ")"
+                        val startItem = "| "
+                        val endItem = " |"
+                        val repeatLength = startItem.length + output.length + endItem.length
+                        out.style(if (result.failedTestCount == 0L) Style.SuccessHeader else Style.FailureHeader).println(
+                            """
                     |
                     |${"-".repeat(repeatLength)}
                     |$startItem$output$endItem
                     |${"-".repeat(repeatLength)}
                     |
-                        """.trimMargin(),
-                    )
+                            """.trimMargin(),
+                        )
+                    }
                 }
-            }
-        })
+            },
+        )
 
         doLast {
             with(out.style(Style.ProgressStatus)) {
@@ -195,11 +205,13 @@ with(tasks) {
 release {
     preTagCommitMessage.set("[Gradle Release] - pre tag commit: ")
     newVersionCommitMessage.set("[Gradle Release] - new version commit: ")
-    versionPatterns = mapOf(
-        """[.]*\.(\d+)\.(\d+)[.]*""" to KotlinClosure2<Matcher, Project, String>({ matcher, _ ->
-            matcher.replaceAll(".${(matcher.group(1)).toString().toInt() + 1}.0")
-        }),
-    )
+    versionPatterns =
+        mapOf(
+            """[.]*\.(\d+)\.(\d+)[.]*""" to
+                KotlinClosure2<Matcher, Project, String>({ matcher, _ ->
+                    matcher.replaceAll(".${(matcher.group(1)).toString().toInt() + 1}.0")
+                }),
+        )
     git {
         requireBranch.set("main")
         pushToRemote.set("origin")
