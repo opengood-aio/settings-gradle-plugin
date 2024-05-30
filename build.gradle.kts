@@ -1,4 +1,3 @@
-
 import org.gradle.api.tasks.testing.logging.TestExceptionFormat
 import org.gradle.api.tasks.testing.logging.TestLogEvent.FAILED
 import org.gradle.api.tasks.testing.logging.TestLogEvent.PASSED
@@ -40,8 +39,8 @@ gradlePlugin {
 }
 
 val kotlinVersion = getKotlinPluginVersion()
-val javaVersion = JavaVersion.VERSION_17
-val jvmTargetVersion = "17"
+val javaVersion = JavaVersion.VERSION_21
+val jvmTargetVersion = "21"
 
 java.apply {
     sourceCompatibility = javaVersion
