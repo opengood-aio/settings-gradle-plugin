@@ -8,6 +8,7 @@ import org.gradle.internal.logging.text.StyledTextOutput
 import org.gradle.internal.logging.text.StyledTextOutput.Style
 import org.gradle.internal.logging.text.StyledTextOutputFactory
 import org.gradle.kotlin.dsl.support.serviceOf
+import org.jetbrains.kotlin.gradle.dsl.JvmTarget
 import org.jetbrains.kotlin.gradle.plugin.getKotlinPluginVersion
 import org.jetbrains.kotlin.gradle.tasks.KotlinCompile
 import java.util.regex.Matcher
@@ -40,7 +41,7 @@ gradlePlugin {
 
 val kotlinVersion = getKotlinPluginVersion()
 val javaVersion = JavaVersion.VERSION_21
-val jvmTargetVersion = "21"
+val jvmTargetVersion = JvmTarget.JVM_21
 
 java.apply {
     sourceCompatibility = javaVersion
@@ -89,9 +90,11 @@ with(tasks) {
     }
 
     withType<KotlinCompile> {
-        kotlinOptions {
-            freeCompilerArgs = listOf("-Xjsr305=strict")
-            jvmTarget = jvmTargetVersion
+        withType<KotlinCompile> {
+            compilerOptions {
+                freeCompilerArgs = listOf("-Xjsr305=strict")
+                jvmTarget.set(jvmTargetVersion)
+            }
         }
     }
 
