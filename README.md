@@ -6,7 +6,6 @@
 [![Codecov](https://codecov.io/gh/opengood-aio/settings-gradle-plugin/branch/main/graph/badge.svg?token=AEEYTGK87F)](https://codecov.io/gh/opengood-aio/settings-gradle-plugin)
 [![Release Version](https://img.shields.io/github/release/opengood-aio/settings-gradle-plugin.svg)](https://github.com/opengood-aio/settings-gradle-plugin/releases/latest)
 [![License](https://img.shields.io/badge/license-MIT-blue.svg)](https://raw.githubusercontent.com/opengood-aio/settings-gradle-plugin/master/LICENSE)
-[![FOSSA Status](https://app.fossa.com/api/projects/custom%2B22161%2Fgithub.com%2Fopengood-aio%2Fsettings-gradle-plugin.svg?type=small)](https://app.fossa.com/projects/custom%2B22161%2Fgithub.com%2Fopengood-aio%2Fsettings-gradle-plugin?ref=badge_small)
 
 Gradle plugin providing centralized settings of OpenGood Gradle projects
 

@@ -31,7 +31,8 @@ fun buildScriptTest(languageType: LanguageType) =
                     )
 
                     val result =
-                        GradleRunner.create()
+                        GradleRunner
+                            .create()
                             .withProjectDir(projectDir.toFile())
                             .withPluginClasspath()
                             .withArguments("--info", "--stacktrace")
