@@ -17,8 +17,8 @@ plugins {
     kotlin("jvm")
     id("java-gradle-plugin")
     id("jacoco")
-    id("maven-publish")
     id("net.researchgate.release")
+    id("maven-publish")
     id("com.gradle.plugin-publish")
 }
 
